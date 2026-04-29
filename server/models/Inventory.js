@@ -17,9 +17,5 @@ const InventorySchema = new mongoose.Schema({
   }
 }, { timestamps: true });
 
-/**
- * We add 'inventory' as the 3rd argument. 
- * Without this, Mongoose would look for "inventories" by default.
- * This ensures the API fetches data from the correct collection seen in your Atlas screenshot.
- */
+
 module.exports = mongoose.model('Inventory', InventorySchema, 'inventory');
