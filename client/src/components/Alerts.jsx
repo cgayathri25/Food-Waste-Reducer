@@ -284,7 +284,7 @@ export default function Alerts() {
       <button className="nav-back" onClick={() => navigate('/home')}>← Home</button>
 
       <nav className="alrt-nav">
-        <Link to="/home" className="alrt-nav-logo">🌱 Food Waste Reducer</Link>
+        <Link to="/home" className="alrt-nav-logo"> Food Waste Reducer</Link>
         <ul>
           {NAV_LINKS.map(l => (
             <li key={l}>
