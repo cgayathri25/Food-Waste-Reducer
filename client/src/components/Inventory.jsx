@@ -276,7 +276,7 @@ export default function Inventory() {
       <div className="veg-float" style={{ bottom: '10%', right: '25%', animationDelay: '5.2s' }}>🥕</div>
 
       <nav className="inv-nav">
-        <Link to="/home" className="inv-nav-logo">🌱 Food Waste Reducer</Link>
+        <Link to="/home" className="inv-nav-logo"> Food Waste Reducer</Link>
         <ul>
           {NAV_LINKS.map((l) => (
             <li key={l}>

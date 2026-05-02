@@ -7,12 +7,12 @@ router.get('/test', (req, res) => {
   res.json({ message: "Inventory route is working and reachable!" });
 });
 
-// 1. GET all items (Used by the Alerts page)
+// 1. GET all items 
 router.get('/', async (req, res) => {
   try {
     res.setHeader('Content-Type', 'application/json');
 
-    // 🔍 DIAGNOSTIC LOG: This will tell us if the DB is actually finding your Grapes
+    //  DIAGNOSTIC LOG: This will tell us if the DB is actually finding your Grapes
     console.log("--- API REQUEST: Fetching all inventory items ---");
     
     const items = await Inventory.find().sort({ expiryDate: 1 });
