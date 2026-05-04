@@ -88,3 +88,68 @@ Passwords: User passwords for manual accounts are encrypted using bcryptjs with 
 Environment Variables: Sensitive database URIs and private keys are managed via .env and service account JSONs, which are excluded from version control via .gitignore.
 
 Identity Management: OAuth 2.0 is utilized for Google Sign-In to ensure secure, token-based authentication. 
+
+System Design and Architecture : 
+
+The Food Waste Reducer is engineered using a modern Three-Tier MERN Stack architecture, ensuring a clear separation of concerns between the user interface, business logic, and data persistence layers.
+
+Architectural Model: Three-Tier Structure
+
+This project follows the traditional Three-Tier model to enhance scalability and maintainability:
+
+Presentation Tier (Frontend): Developed with React.js, this layer manages the user experience, client-side routing, and responsive UI components.
+
+Application Tier (Backend): Powered by Node.js and Express.js, this layer handles the core business logic, including authentication protocols and the expiry calculation engine.
+
+Data Tier (Database): Utilizing MongoDB Atlas, this NoSQL cloud database ensures persistent and secure storage for user profiles and inventory records.
+
+Design Patterns and Models : 
+
+Model-View-Controller (MVC) : 
+
+The backend is structured according to the MVC design pattern to maintain organizational clarity:
+
+Models: Mongoose schemas define the data structure and enforce validation rules within the MongoDB environment.
+
+Controllers (Routes): Express routers act as controllers that receive HTTP requests from the frontend, interact with the models, and return structured JSON responses.
+
+Views: The React-based frontend serves as the dynamic view layer that renders the processed data for the end-user.
+
+RESTful API Design : 
+
+Communication between the client and server is based on the REST (Representational State Transfer) model:
+
+Stateless Communication: Each request from the client contains all the information needed for the server to fulfill it.
+
+Standardized Methods: The application utilizes standard HTTP verbs including POST for authentication and item creation, GET for inventory retrieval, and DELETE for item removal.
+
+Event-Driven Alert Architecture : 
+
+A specialized Event-Driven model was implemented for the notification system to proactively prevent food waste:
+
+Automated Scheduling: A Node-Cron background worker scans the database at set intervals to identify items nearing their expiration dates.
+
+Push Notification Pipeline: The backend triggers events via Firebase Cloud Messaging (FCM) using project-specific VAPID keys.
+
+Background Processing: A dedicated Service Worker remains active in the browser background to catch push events and display alerts even when the application tab is closed.
+
+Authentication and Identity Model : 
+
+The project employs a Hybrid Identity Management model:
+
+Manual Authentication: Local registration and login utilizing server-side password hashing.
+
+Federated Identity: Integration with Google OAuth 2.0 via Firebase, allowing users to sign in with existing accounts.
+
+Identity Synchronization: A custom google-sync route ensures that external identity data is correctly mapped and stored within the local MongoDB environment.
+
+Team Contributions : 
+
+1. C.Gayathri : Login & Authentication, MongoDB Atlas integration and schema, Cron-job Alerts, SOW, Test Plan
+2. Siddanth G : Frontend 
+3. Aasish G : Community Food Sharing
+4. Tanishka Guha : Meal Planner
+5. Monisha P : Storage tips, SRS
+6. Varshith D : Dashboard, SDS
+7. Rutwik K : Storage tips, SRS, SDS
+8. Pranathi G : Storage tips (Only assisted)
